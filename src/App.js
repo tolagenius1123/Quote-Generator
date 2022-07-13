@@ -1,23 +1,83 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { FaQuoteLeft } from "react-icons/fa";
+import { FaQuoteRight } from "react-icons/fa";
+import { FaVolumeUp } from "react-icons/fa";
+import { FaCopy } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import './index.css';
+import axios from 'axios';
+import { useState } from 'react';
+// import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+
 
 function App() {
+
+	const[quote, setQuote] = useState("Sustaining true friendship is a lot more challenging than we give it credit for.");
+
+	const randomQuote = () => {
+		axios.get("http://api.quotable.io/random")
+		.then(response => {
+			setQuote(response.data.content)
+		}).catch(error => 
+			console.log(error)
+		)
+		getAuthor()
+
+	}
+
+	const [author, setAuthor] = useState("Wayne Gretzky")
+
+	const getAuthor = () =>{
+		axios.get("http://api.quotable.io/random")
+		.then(res => setAuthor(res.data.author))
+		.catch(err => console.log(err))
+	}
+
+	const textToSpeech  = () => {
+		let utterance = new SpeechSynthesisUtterance(`${quote} by ${author}`);
+		speechSynthesis.speak(utterance)
+	}
+
+	const copyQuote = () => {
+		navigator.clipboard.writeText(`${quote} by ${author}`);
+	}
+
+	const postTweet = () => {
+		let tweetUrl = `https://twitter.com/intent/tweet?url=${quote} - ${author}`;
+		window.open(tweetUrl, "_blank");
+	}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+		<div className="wrapper">
+			<header>Quote of the Day</header>
+			<div className="content">
+				<div className="quote-area">
+					<FaQuoteLeft className='left-quote'/>
+					{quote && <p className='quote'>{quote}</p>}
+					<FaQuoteRight className='right-quote'/>
+				</div>
+				<div className="author">
+					<span>__</span>
+					<span className="name">{author}</span>
+				</div>
+			</div>
+
+			<div className="button">
+				<div className="features">
+					<ul>
+						<FaVolumeUp onClick={textToSpeech} className='features-list'/>
+						<FaCopy onClick={copyQuote} className='features-list'/>
+						<FaTwitter onClick={postTweet} className='features-list'/>
+					</ul>
+					<button onClick={randomQuote}>New Quote</button>
+				</div>
+			</div>
+
+		</div>
+
     </div>
   );
 }
