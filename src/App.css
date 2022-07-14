@@ -82,3 +82,32 @@
   font-style: 16px;
 }
 
+@media screen and (max-width: 992px){
+  .features button{
+    background: #231955;
+  }
+
+  .App{
+      background: #231955;
+  }
+}
+
+@media screen and (max-width: 768px){
+	.features button {
+		background: #9EB23B;
+	}
+	
+	.App {
+		background: #9EB23B;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.features button {
+		background: #FF8B8B;
+	}
+
+	.App {
+		background: #FF8B8B;
+	}
+}

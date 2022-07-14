@@ -7,31 +7,21 @@ import { FaTwitter } from "react-icons/fa";
 import './index.css';
 import axios from 'axios';
 import { useState } from 'react';
-// import { CopyToClipboard } from 'react-copy-to-clipboard';
-
 
 
 function App() {
 
 	const[quote, setQuote] = useState("Sustaining true friendship is a lot more challenging than we give it credit for.");
+	const [author, setAuthor] = useState("Wayne Gretzky")
 
 	const randomQuote = () => {
 		axios.get("http://api.quotable.io/random")
 		.then(response => {
 			setQuote(response.data.content)
-		}).catch(error => 
+			setAuthor(response.data.author)
+		}).catch(error => {
 			console.log(error)
-		)
-		getAuthor()
-
-	}
-
-	const [author, setAuthor] = useState("Wayne Gretzky")
-
-	const getAuthor = () =>{
-		axios.get("http://api.quotable.io/random")
-		.then(res => setAuthor(res.data.author))
-		.catch(err => console.log(err))
+		})
 	}
 
 	const textToSpeech  = () => {
@@ -47,6 +37,8 @@ function App() {
 		let tweetUrl = `https://twitter.com/intent/tweet?url=${quote} - ${author}`;
 		window.open(tweetUrl, "_blank");
 	}
+
+
 
   return (
     <div className="App">
