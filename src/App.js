@@ -15,14 +15,16 @@ function App() {
 	const [author, setAuthor] = useState("Wayne Gretzky")
 
 	const randomQuote = () => {
-		axios.get("http://api.quotable.io/random")
+		axios.get("https://api.quotable.io/random")
 		.then(response => {
 			setQuote(response.data.content)
 			setAuthor(response.data.author)
 		}).catch(error => {
 			console.log(error)
 		})
+		console.log(randomQuote)
 	}
+	
 
 	const textToSpeech  = () => {
 		let utterance = new SpeechSynthesisUtterance(`${quote} by ${author}`);
