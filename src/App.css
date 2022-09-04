@@ -1,49 +1,47 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
 
 .App {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #5372f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #5372f0;
 }
 
-.wrapper{
+.wrapper {
   width: 605px;
   background: #fff;
   border-radius: 15px;
   padding: 30px 30px 25px;
 }
 
-.wrapper header{
+.wrapper header {
   font-size: 35px;
   font-weight: 600;
   text-align: center;
 }
 
-.wrapper .content{
+.wrapper .content {
   margin: 35px 0;
 }
 
-.content .quote-area{
+.content .quote-area {
   display: flex;
   justify-content: center;
-
 }
 
-.quote-area .quote{
+.quote-area .quote {
   font-size: 22px;
   text-align: center;
   /* word-break: break-all; */
-  
 }
 
-.content .author{
+.content .author {
   display: flex;
   margin-top: 20px;
   justify-content: flex-end;
@@ -51,27 +49,27 @@
   font-style: italic;
 }
 
-.author span:first-child{
-    margin: -7px 5px 0 0;
-    font-family: monospace;
+.author span:first-child {
+  margin: -7px 5px 0 0;
+  font-family: monospace;
 }
 
-.wrapper .button{
+.wrapper .button {
   border-top: 1px solid #ccc;
 }
 
-.button .features{
+.button .features {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
   align-items: center;
 }
 
-.features ul{
+.features ul {
   display: flex;
 }
 
-.features button{
+.features button {
   border: none;
   outline: none;
   background: #5372f0;
@@ -82,32 +80,39 @@
   font-style: 16px;
 }
 
-@media screen and (max-width: 992px){
-  .features button{
+@media screen and (max-width: 992px) {
+  .features button {
     background: #231955;
   }
 
-  .App{
-      background: #231955;
+  .App {
+    background: #231955;
   }
 }
 
-@media screen and (max-width: 768px){
-	.features button {
-		background: #9EB23B;
-	}
-	
-	.App {
-		background: #9EB23B;
-	}
+@media screen and (max-width: 768px) {
+  .features button {
+    background: #9eb23b;
+  }
+
+  .App {
+    background: #9eb23b;
+  }
 }
 
 @media screen and (max-width: 576px) {
-	.features button {
-		background: #FF8B8B;
-	}
+  .features button {
+    background: #ff8b8b;
+  }
 
-	.App {
-		background: #FF8B8B;
-	}
+  .App {
+    background: #ff8b8b;
+    padding: 20px;
+  }
+  .wrapper {
+    width: 400px;
+    /* background: #fff; */
+    /* border-radius: 15px; */
+    /* padding: 30px 30px 25px; */
+  }
 }

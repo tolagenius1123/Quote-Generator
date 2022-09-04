@@ -6,7 +6,7 @@ import { FaCopy } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import './index.css';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function App() {
@@ -24,6 +24,16 @@ function App() {
 		})
 		console.log(randomQuote)
 	}
+
+	useEffect(() => {
+		axios.get("https://api.quotable.io/random")
+		.then(response => {
+			setQuote(response.data.content)
+			setAuthor(response.data.author)
+		}).catch(error => {
+			console.log(error)
+		})	
+	}, [])
 	
 
 	const textToSpeech  = () => {
